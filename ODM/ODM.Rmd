@@ -45,14 +45,14 @@ author:
 institute:
 - one: Integrated Statistics, Woods Hole, MA, USA
 - two: University of Virginia, Charlottesville, VA, USA
-- three: NOAA Southwest Fisheries Science Center, La Jolla, CA, USA 
-- four: NOAA Monterey Bay National Marine Sancturary, Monterey, CA, USA 
-- five: NOAA Northwest Fisheries Science Center, Seattle, WA, USA
+- three: Three
+- four: Four 
+- five: Five
 - six: Woods Hole Laboratory, NOAA NMFS Northeast Fisheries Science Center, Woods Hole, MA, USA
-- seven: Location seven
-- eight: EcoQuants, Santa Barbara, CA, USA
-- nine: Location nine
-- ten: Location ten
+- seven: University of Washington, Joint Institute for the Study of the Atmosphere and Ocean, Seattle, WA, USA
+- eight: EcoQuants LLC, Santa Barbara, CA, USA
+- nine: nine
+- ten: ten
     
 ## Write Abstract
 abstract: |
@@ -74,7 +74,7 @@ image.dir <- './images'
 ```
 
 # Introduction {#intro}
-<!-- Grab text from google doc -->
+<!-- Grab text from google doc, NOTE: this is sample text grabbed to set up bibliography -->
 
 As implemented so far, integrated ecosystem assessments are more often than not bespoke products that are specific to regional policy needs at varying spatial scales. While unique, these assessments are typically built around the flow of the IEA framework outlined in [@Levin2009]. This process consists of a scoping step to outline management objectives, the identification of ecosystem indicators to monitor key processes, the compilation of ecosystem status reports highlighting status and trends of indicators, a risk assessment step identifying where ecosystem considerations might threaten management objectives, and finally management strategy evaluation, in which potential management actions are tested using simulation models. The elements of the IEA framework are central to its implementation, but its flow is not prescriptive. Instead, the IEA process is malleable to the needs of stakeholders, meaning that IEAs may manifest in many different forms. 
 
@@ -82,17 +82,51 @@ However, data acquisition, management, communication, and dissemination are univ
 
 Embracing these tools and strategies speaks to a broader philosophy of open science that has yet to fully catch on in the IEA community. Beyond making data publicly available, open science advocates for the “free and unfettered access to all aspects of the scientific endeavor” [@hampton2015], including methods, data and scientific products. These values lend themselves to the broad applicability of IEAs as decision-making tools for ecosystem-based management (EBM). 
 
-There are several entry and exit points for data, methodological, and scientific products throughout the execution of an IEA. Data entry points are formed during the exploratory phases of the IEA process, where objectives are scoped and representative indicators are developed. Exit points for data products can be found in the derived indicator data informing ecosystem status reports and risk assessments. Simulated products and model parameters, such as those resulting from MSE model runs, are also important to disseminate. Any data that leaves or enters an IEA brings with it metadata and code used to analyze, process, and visualize the data (in various stages of completion). Through the process these datasets, accompanying code, and metadata documentation become their own general, scientific and technical products feeding into subsequent products and adding transparency and efficiency \ref{iealoop}. 
+There are several entry and exit points for data, methodological, and scientific products throughout the execution of an IEA. Data entry points are formed during the exploratory phases of the IEA process, where objectives are scoped and representative indicators are developed. Exit points for data products can be found in the derived indicator data informing ecosystem status reports and risk assessments. Simulated products and model parameters, such as those resulting from MSE model runs, are also important to disseminate. Any data that leaves or enters an IEA brings with it metadata and code used to analyze, process, and visualize the data (in various stages of completion). Through the process these datasets, accompanying code, and metadata documentation become their own general, scientific and technical products feeding into subsequent products and adding transparency and efficiency (Fig. \@ref(fig:iealoop)). 
 
 Without an underlying data management protocol, the vast quantities of data and documentation required to successfully execute an IEA can be overwhelming for practitioners and clients both. For example, the development of ecosystem status reports and risk assessments requires considering the management relevance of hundreds of data sets from many fields. In practice this meant sifting through over 400 unique spatial and temporal data sets that were submitted for consideration during the development of the New England State of the Ecosystem Report, an IEA product. However, only indicators of interest to managers and those necessary for storytelling were included in the final product; just over 90 [@SOE-NEFMC2019].  Depending on the governing body implementing the IEA, each data set must be fully documented with metadata and made publicly available. Versioning data sets and associated metadata relative to specific IEA products also introduces challenges for scientists operating outside the bounds of their training. These hurdles result in data processing and documentation becoming a full time job, and indeed, it is becoming increasingly common for IEA teams to hire Data Analysts and Data Scientists to deal with the data deluge. 
 
-![Products driving open data science within the IEA loop. \label{iealoop}](images/image1.png) 
+```{r iealoop, fig.cap = "General, Scientific and technical products developed within the IEA loop.", eval = T, echo = F, out.width="100%"}
+
+knitr::include_graphics(file.path(image.dir, 'image1.png'))
+
+```
 
 The implementation of IEA is an amalgam of the ecosystem and data sciences. Understanding this, we suggest that IEA teams embrace a philosophy of open science. This approach has gained momentum over the past decade within the ecological sciences as a way to deal with large amounts of data produced from a variety of sources [@michener2012], as well as to improve transparency, reproducibility, repeatability, and ease of communication of data products [@rocchini2012; @lowndes2015; @lowndes2017; @ma2018]. This can be accomplished using openly available tools, many of which are highlighted by @hampton2015 and @lowndes2017. 
 
 The benefits of implementing software development strategies range from the ethical to the practical. For example, @lowndes2017 suggests that changing ecosystem conditions due to anthropogenic impacts necessitate openness among environmental scientists whose data (and code to recreate their data) provide “snapshots” of their study systems amidst the changes. Further, openly-sourcing scientific data with accompanying code provides a record from which previous results may be built upon as more data are collected [@lowndes2017]. From this perspective, iterative IEA products such as ecosystem reports and risk assessments are themselves data points; forming ever-extending arrays of compiled information through time. This approach has been embraced by the Ocean Health Index, which is designed to monitor human-ocean relationships through time by repeated compilation and analysis of ecosystem data [@halpern2012; @halpern2015; @lowndes2015]. 
 
 We suggest that the incorporation of version control and standardized methods for the collection, aggregation, and dissemination of IEA-oriented data and products can facilitate flexible and efficient use of IEAs, broadening their applicability and hastening their uptake by resource managers. These methods also confront the challenging spatial aspects of IEAs, which are inherently unique to the systems being addressed. As we discuss below, embracing standardized methods and open data science principles/tools would facilitate the implementation of future IEAs in new systems.
+
+<!---### Panel Figure and Table ####--->
+```{r sciloop, out.width="50%", eval = T, echo = F, warning = F, message = F}
+
+knitr::include_graphics(file.path(image.dir, ('image2.png')))
+
+```
+
+```{r table, eval = T, echo = F, message = F, warning = F}
+
+library(knitr)
+library(tidyverse)
+library(kableExtra)
+
+workflow.table <- data.frame(
+  Function = c(rep("Import", 2), rep("Analyze", 3), rep("Visualize", 3), rep("Communicate", 5)),
+  Implementation = c('ecodata', 'Data portals', 'lm to ecosystem modelling','ecotrend', 'Ecosystem modelling', 'Standardized plotting', 'Web-based visuals', 'Simple plots', 'Report writing, article writing, methods documentation', 'Continuous integration', 'Versioning software', 'Collaborative package/document development and data sharing', 'Data portals'),
+  Tool = c('R package', 'ERDDAP','Shared R scripts', 'R package', 'Ecopath with Ecosim', 'Shared R scripts','Shiny','Excel','Rmarkdown','Travis', 'Git', 'Github', 'ERDDAP'))
+  
+knitr::kable(workflow.table, caption = "table table table", booktabs = T) %>% 
+  kable_styling(full_width = F,  position = "right", font_size = 7) %>% 
+  column_spec(1, bold = T) %>% 
+  column_spec(2, width = "10em") %>%
+  collapse_rows(columns = 1) 
+
+``` 
+
+
+
+
 
 
 

@@ -1,0 +1,14 @@
+Function,Implementation,Tool
+Import,ecodata,R package
+Import,Data portals,ERDDAP
+Analyze,lm to ecosystem modelling,Shared R scripts
+Analyze,ecotrend,R package
+Analyze,Ecosystem modelling,Ecopath with Ecosim
+Visualize,Standardized plotting,Shared R scripts
+Visualize,Web-based visuals,Shiny
+Visualize,Simple plots,Excel
+Communicate,"Report writing, article writing, methods documentation",Rmarkdown
+Communicate,Continuous integration,Travis
+Communicate,Versioning software,Git
+Communicate,Collaborative package/document development and data sharing,Github
+Communicate,Data portals,ERDDAP

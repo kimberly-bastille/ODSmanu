@@ -84,6 +84,7 @@ Without an underlying data management protocol, the vast quantities of data and 
   \centering
   \includegraphics[width=1.0\textwidth]{./images/products-loop.pdf}
   \caption{Products as part of the IEA loop according to audience: general, scientific and technical.}
+  \label{fig:products-loop}
 \end{figure}
 
 The implementation of IEA is an amalgam of the ecosystem and data sciences. Understanding this, we suggest that IEA teams embrace a philosophy of open science. This approach has gained momentum over the past decade within the ecological sciences as a way to deal with large amounts of data produced from a variety of sources [@michener2012], as well as to improve transparency, reproducibility, repeatability, and ease of communication of data products [@rocchini2012; @lowndes2015; @lowndes2017; @ma2018]. This can be accomplished using openly available tools, many of which are highlighted by @hampton2015 and @lowndes2017. 
@@ -102,20 +103,12 @@ library(readr)
 library(here)
 
 workflow_csv <- here("ODM/tables/workflow.csv")
-workflow_tex <- here("ODM/tables/workflow2.tex")
-
-if (!file.exists(workflow_csv)){
-  
-  tbl_workflow <- data.frame(
-    Function = c(rep("Import", 2), rep("Analyze", 3), rep("Visualize", 3), rep("Communicate", 5)),
-    Implementation = c('ecodata', 'Data portals', 'lm to ecosystem modelling','ecotrend', 'Ecosystem modelling', 'Standardized plotting', 'Web-based visuals', 'Simple plots', 'Report writing, article writing, methods documentation', 'Continuous integration', 'Versioning software', 'Collaborative package/document development and data sharing', 'Data portals'),
-    Tool = c('R package', 'ERDDAP','Shared R scripts', 'R package', 'Ecopath with Ecosim', 'Shared R scripts','Shiny','Excel','Rmarkdown','Travis', 'Git', 'Github', 'ERDDAP'))
-  write_csv(tbl_workflow, "./tables/workflow.csv")
-}
+workflow_tex <- here("ODM/tables/workflow.tex")
 
 if (!file.exists(workflow_tex)){
 
   tbl_workflow <- read_csv(workflow_csv)
+  # TODO: fill down empty cells in first column
 
   knitr::kable(tbl_workflow, booktabs = T, format="latex") %>%
     kable_styling(full_width = F,  position = "right", font_size = 3) %>%

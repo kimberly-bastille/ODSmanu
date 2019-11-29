@@ -84,6 +84,7 @@ Without an underlying data management protocol, the vast quantities of data and 
   \centering
   \includegraphics[width=1.0\textwidth]{./images/products-loop.pdf}
   \caption{Products as part of the IEA loop according to audience: general, scientific and technical.}
+  \label{fig:products-loop}
 \end{figure}
 
 The implementation of IEA is an amalgam of the ecosystem and data sciences. Understanding this, we suggest that IEA teams embrace a philosophy of open science. This approach has gained momentum over the past decade within the ecological sciences as a way to deal with large amounts of data produced from a variety of sources [@michener2012], as well as to improve transparency, reproducibility, repeatability, and ease of communication of data products [@rocchini2012; @lowndes2015; @lowndes2017; @ma2018]. This can be accomplished using openly available tools, many of which are highlighted by @hampton2015 and @lowndes2017. 
@@ -92,66 +93,60 @@ The benefits of implementing software development strategies range from the ethi
 
 We suggest that the incorporation of version control and standardized methods for the collection, aggregation, and dissemination of IEA-oriented data and products can facilitate flexible and efficient use of IEAs, broadening their applicability and hastening their uptake by resource managers. These methods also confront the challenging spatial aspects of IEAs, which are inherently unique to the systems being addressed. As we discuss below, embracing standardized methods and open data science principles/tools would facilitate the implementation of future IEAs in new systems.
 
-<!---### Panel Figure and Table ####--->
+<!---
+### Scientific Workflow Panel: Figure & Table ###
+
+Sources:
+- figure: [ODM Fig work up.pptx - Google Slides](https://docs.google.com/presentation/d/1Cc4xI_xo_BVut_WJys-mFgxhDFfDxsSV/edit#slide=id.g6ba47551c5_1_0)
+- table: [sciflow-tasks - Google Sheets](https://docs.google.com/spreadsheets/d/1J2psfQ-ZgwiS-9ak2g0wtXE9vj1FlzJaQufryIBqMgQ/edit#gid=0)
+
+sciloop.pdf:
+- Google Slides, File > Download > pdf -> sciloop.pdf
+- Delete other pages; In AI, Release Clipping Mask twice, Fit to Artwork Bounds.
+
+More on latex for side-by-side table and figure:
+- [subfloats - Align figure and tables in subfigure environment - TeX - LaTeX Stack Exchange](https://tex.stackexchange.com/questions/455305/align-figure-and-tables-in-subfigure-environment)
+-->
 
 ```{r workflow_table}
 library(knitr)
 library(tidyverse)
 library(kableExtra)
-library(readr)
 library(here)
 
-workflow_csv <- here("ODM/tables/workflow.csv")
-workflow_tex <- here("ODM/tables/workflow2.tex")
+redo_workflow_tbl <- F
+workflow_cols <- 1:2
 
-if (!file.exists(workflow_csv)){
-  
-  tbl_workflow <- data.frame(
-    Function = c(rep("Import", 2), rep("Analyze", 3), rep("Visualize", 3), rep("Communicate", 5)),
-    Implementation = c('ecodata', 'Data portals', 'lm to ecosystem modelling','ecotrend', 'Ecosystem modelling', 'Standardized plotting', 'Web-based visuals', 'Simple plots', 'Report writing, article writing, methods documentation', 'Continuous integration', 'Versioning software', 'Collaborative package/document development and data sharing', 'Data portals'),
-    Tool = c('R package', 'ERDDAP','Shared R scripts', 'R package', 'Ecopath with Ecosim', 'Shared R scripts','Shiny','Excel','Rmarkdown','Travis', 'Git', 'Github', 'ERDDAP'))
-  write_csv(tbl_workflow, "./tables/workflow.csv")
-}
+workflow_csv  <- "https://docs.google.com/spreadsheets/d/1J2psfQ-ZgwiS-9ak2g0wtXE9vj1FlzJaQufryIBqMgQ/export?format=csv&gid=0"
+#workflow_csv <- here("ODM/tables/workflow.csv")
+workflow_tex <- here("ODM/tables/workflow.tex")
 
-if (!file.exists(workflow_tex)){
+if (!file.exists(workflow_tex) | redo_workflow_tbl){
 
-  tbl_workflow <- read_csv(workflow_csv)
+  tbl_workflow <- read_csv(workflow_csv) %>% 
+    select(1:2) %>% 
+    fill(1)
 
-  knitr::kable(tbl_workflow, booktabs = T, format="latex") %>%
-    kable_styling(full_width = F,  position = "right", font_size = 3) %>%
+  kable(tbl_workflow, booktabs = T, format="latex") %>%
+    #kable_styling(full_width = F, position = "right", font_size = 5) %>%
+    kable_styling(font_size = 5) %>%
     column_spec(1, bold = T) %>%
-    column_spec(2, width = "10em") %>%
-    collapse_rows(columns = 1) %>% 
+    #column_spec(2, width = "20em") %>%
+    collapse_rows(columns = 1, valign = "middle") %>% 
+    str_replace(fixed("\\begin{table}[H]\n\\centering"), "") %>% 
+    str_replace(fixed("\\end{table}"), "") %>% 
     cat(file = workflow_tex)
 }
 ```
 
-<!--
-workflow.tex:
-- strip `table` begin/end lines:
-  ```
-  \begin{table}[H]
-  ...
-  \end{table}
-  ```
-sciloop.pdf:
-- Google Slides, File > Download > svg -> sciloop.svg
-- on Mac terminal: 
-  ```bash
-  brew cask install inkscape
-  cd ~/github/ODSmanu/ODM/images
-  inkscape -D -z --file="$PWD/sciloop.svg" --export-pdf="$PWD/sciloop.pdf" --export-latex
-  ```
--->
-
 \begin{figure}
   \centering
   \subfloat[Process]{           
-    \includegraphics[width=0.50\textwidth,valign=t]{./images/sciloop.pdf}
+    \includegraphics[width=0.50\textwidth,valign=c]{./images/sciloop.pdf}
     \label{fig:sciflow-loop}
     }
   \subfloat[Elements]{
-    \adjustbox{valign=t}{
+    \adjustbox{valign=c}{
       \input{./tables/workflow}
       \label{tbl:sciflow-table}}}
   \caption{Scientific workflow.}

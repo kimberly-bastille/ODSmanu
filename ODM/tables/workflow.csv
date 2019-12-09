@@ -1,14 +1,16 @@
-Function,Implementation,Tool
-Import,ecodata,R package
-Import,Data portals,ERDDAP
-Analyze,lm to ecosystem modelling,Shared R scripts
-Analyze,ecotrend,R package
-Analyze,Ecosystem modelling,Ecopath with Ecosim
-Visualize,Standardized plotting,Shared R scripts
-Visualize,Web-based visuals,Shiny
-Visualize,Simple plots,Excel
-Communicate,"Report writing, article writing, methods documentation",Rmarkdown
-Communicate,Continuous integration,Travis
-Communicate,Versioning software,Git
-Communicate,Collaborative package/document development and data sharing,Github
-Communicate,Data portals,ERDDAP
+TABLE,,Scientific workflow,IEA phases
+Step,Task,Tools,Implementation
+Import,Data catalogs (unstructured; manual),"InPort, MarineCadastre, MBON.ioos.us",
+,Data services (automate with APIs),"ERDDAP, OBIS",
+,Custom datasets,"QA/QC, R functions",NE: ecodata
+Analyze,Trend analysis,R packages,NE: ecotrend
+,Risk assessment,,R package
+,Ecosystem modelling,Ecopath with Ecosim,
+Visualize,"Time series plots, study area maps",ggplot2 -> ggplotly(),Shared R scripts
+,"Interactive, online visualizations","R htmlwidgets, Shiny","Shiny, CaCurr:JS w/ R"
+Communicate,"Reports with methods, tables, figures",,Rmarkdown
+,Online website,"Rmarkdown, JS",Rmarkdown
+,Data portals (catalogs + services),,ERDDAP
+Collaborate,Continuous integration,,Travis
+,Versioning of code,,Git
+,Central repository,,Github

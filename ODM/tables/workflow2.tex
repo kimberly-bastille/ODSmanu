@@ -1,0 +1,40 @@
+\begin{table}[H]
+\centering\begingroup\fontsize{3}{5}\selectfont
+
+\begin{tabular}{>{\bfseries}l>{\raggedright\arraybackslash}p{10em}ll}
+\toprule
+TABLE & X2 & Scientific workflow & IEA phases\\
+\midrule
+Step & Task & Tools & Implementation\\
+\cmidrule{1-4}
+Import & Data catalogs (unstructured; manual) & InPort, MarineCadastre, MBON.ioos.us & NA\\
+\cmidrule{1-4}
+ & Data services (automate with APIs) & ERDDAP, OBIS & NA\\
+\cmidrule{2-4}
+\multirow{-2}{*}{\raggedright\arraybackslash NA} & Custom datasets & QA/QC, R functions & NE: ecodata\\
+\cmidrule{1-4}
+Analyze & Trend analysis & R packages & NE: ecotrend\\
+\cmidrule{1-4}
+ & Risk assessment & NA & R package\\
+\cmidrule{2-4}
+\multirow{-2}{*}{\raggedright\arraybackslash NA} & Ecosystem modelling & Ecopath with Ecosim & NA\\
+\cmidrule{1-4}
+Visualize & Time series plots, study area maps & ggplot2 -> ggplotly() & Shared R scripts\\
+\cmidrule{1-4}
+NA & Interactive, online visualizations & R htmlwidgets, Shiny & Shiny, CaCurr:JS w/ R\\
+\cmidrule{1-4}
+Communicate & Reports with methods, tables, figures & NA & Rmarkdown\\
+\cmidrule{1-4}
+ & Online website & Rmarkdown, JS & Rmarkdown\\
+\cmidrule{2-4}
+\multirow{-2}{*}{\raggedright\arraybackslash NA} & Data portals (catalogs + services) & NA & ERDDAP\\
+\cmidrule{1-4}
+Collaborate & Continuous integration & NA & Travis\\
+\cmidrule{1-4}
+ & Versioning of code & NA & Git\\
+\cmidrule{2-4}
+\multirow{-2}{*}{\raggedright\arraybackslash NA} & Central repository & NA & Github\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}

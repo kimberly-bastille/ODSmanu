@@ -1,49 +1,50 @@
 ---
 title: Improving the IEA approach using principles of open data science
 runtitle: Open data science in IEAs
-#Finish list from google spreadsheet [https://docs.google.com/spreadsheets/d/1NO1_rLnXk3NYhwDPxaHtn6nEW_KFfgDYGK2qitXfSFI/edit#gid=0]
+
 author: 
-  
 - name: Kimberly Bastille 
-  institute: one
+  institute: one, seven
 - name: Sean Hardison 
   institute: two
 - name: Lynn DeWitt 
   institute: three
 - name: Jennifer Brown 
-  institute: four
+  institute: four, five
 - name: Jameal Samhouri 
-  institute: five
+  institute: six
 - name: Sarah Gaichas 
-  institute: six
-- name: Sean Lucey 
-  institute: six
-- name: Kelly Kearney 
   institute: seven
-- name: Ben Best 
+- name: Sean Lucey 
+  institute: seven
+- name: Kelly Kearney 
   institute: eight
-- name: Scott Cross 
+- name: Ben Best 
   institute: nine
-- name: Scott Large 
-  institute: six
-- name: Ellen Spooner 
+- name: Scott Cross 
   institute: ten
-#Finish adding from the google spreadsheet [https://docs.google.com/spreadsheets/d/1NO1_rLnXk3NYhwDPxaHtn6nEW_KFfgDYGK2qitXfSFI/edit#gid: 
+- name: Scott Large 
+  institute: seven
+- name: Ellen Spooner 
+  institute: eleven, twelve
+ 
 institute:
 - one: Integrated Statistics, Woods Hole, MA, USA
 - two: University of Virginia, Charlottesville, VA, USA
-- three: Three
-- four: Four 
-- five: Five
-- six: Woods Hole Laboratory, NOAA NMFS Northeast Fisheries Science Center, Woods Hole, MA, USA
-- seven: University of Washington, Joint Institute for the Study of the Atmosphere and Ocean, Seattle, WA, USA
-- eight: EcoQuants LLC, Santa Barbara, CA, USA
-- nine: nine
-- ten: ten
+- three: National Oceanic and Atmospheric Administration, National Marine Fisheries Service, Southwest Fisheries Science Center, Environmental Research Division, Santa Cruz, CA, USA
+- four: ECOS Consulting LLC, Lafayette, CA, USA 
+- five: National Oceanic and Atmospheric Administration, Channel Islands National Marine Sanctuary, Santa Barbara, CA, USA
+- six:  National Oceanic and Atmospheric Administration,  National Marine Fisheries Service, Northwest Fisheries Science Center, Conservation Biology Division, Seattle, WA, United States of America
+- seven: National Oceanic and Atmospheric Administration, National Marine Fisheries Service, Northeast Fisheries Science Center, Woods Hole, MA, USA
+- eight: University of Washington, Joint Institute for the Study of the Atmosphere and Ocean, Seattle, WA, USA
+- nine: EcoQuants LLC, Santa Barbara, CA, USA
+- ten: National Oceanic and Atmospheric Administration, National Environmental Satellite, Data, and Information Service, National Centers for Environmental Information, Charleston, SC, USA
+- eleven: ECS Federal, Fairfax VA, USA
+- twelve: National Oceanographic and Atmospheric Administration, Fisheries Office of Science and Technology, Integrated Ecosystem Assessment Program, Silver Spring, MD, USA
     
-abstract: |
-  The text of your abstract.  150 -- 250 words.
-  
+abstract: 
+  As implemented so far, integrated ecosystem assessments (IEAs) are often bespoke products specific to regional policy needs at varying spatial scales. Data acquisition, management, processing, analysis, and communication are universal challenges that apply across the disparate applications of IEAs. Embracing open science, which is defined as public access to scientific data, methods, and products, along with the tools facilitating open science, have been suggested as solutions to these data challenges. Here we provide a snapshot of the state of open science practices in IEAs ongoing across the United States. We show that open science  has improved the flexibility, reproducibility and efficiency of the scientific workflows within the IEA framework. Each scientific workflow in place today has progressed incrementally with each iteration and still have opportunities for further advancement. Though the initial time investment to learn new open science software skills is substantial the return is far greater. The rapid product turnaround and the highly collaborative nature of IEAs make open science extremely useful in advancing toward Ecosystem Based Management (EBM). 
+
 csl: estuaries-and-coasts.csl
 bibliography: bibliography.bib
 output:
@@ -71,95 +72,164 @@ knitr::opts_chunk$set(echo = F, warning = F, message = F)
 # Introduction {#intro}
 <!-- Grab text from google doc, NOTE: this is sample text grabbed to set up bibliography -->
 
-As implemented so far, integrated ecosystem assessments are more often than not bespoke products that are specific to regional policy needs at varying spatial scales. While unique, these assessments are typically built around the flow of the IEA framework outlined in [@Levin2009]. This process consists of a scoping step to outline management objectives, the identification of ecosystem indicators to monitor key processes, the compilation of ecosystem status reports highlighting status and trends of indicators, a risk assessment step identifying where ecosystem considerations might threaten management objectives, and finally management strategy evaluation, in which potential management actions are tested using simulation models. The elements of the IEA framework are central to its implementation, but its flow is not prescriptive. Instead, the IEA process is malleable to the needs of stakeholders, meaning that IEAs may manifest in many different forms. 
+As implemented so far, integrated ecosystem assessments (IEAs) are often bespoke products specific to regional policy needs at varying spatial scales. While assessments are typically unique, they generally conform to the IEA framework outlined in [@Levin2009]. The IEA framework is an iterative process that consists of a scoping phase to define management objectives, the identification of ecosystem indicators to monitor key ecosystem components, the compilation of ecosystem status reports assessing  status and trends of indicators, a risk assessment phase identifying where ecosystem considerations might threaten management objectives, and finally management strategy evaluation (MSE), in which potential management actions are tested using simulation models. As the approach is iterative, any management actions are followed with continued monitoring and reassessment of management goals [@levin2008; @Levin2009; @samhouri2014]. The elements of the IEA framework are central to its implementation, but its flow is not prescriptive [@harvey2017]. Instead, IEAs are malleable to the needs of stakeholders, meaning that each IEA manifests with unique structural requirements. 
 
-However, data acquisition, management, communication, and dissemination are universal challenges that apply across the disparate applications of IEAs. Solving these challenges is not trivial, but over the past decade several examples have emerged suggesting the use of open data science tools as potential solutions [@rocchini2012; @lowndes2015; @lowndes2017; @ma2018]. For example, Lowndes et al. 2017 discussed how embracing open science methods allowed for increased efficiency, transparency, and reproducibility in the development of the Ocean Health Index; a modular framework developed to assess the benefits of marine ecosystems to humans for sustainable management. Case studies for applying open science processes to IEAs have also been developed for ecosystem reporting in the Northeast Large Marine Ecosystem. Specifically, Ma et al. 2017 show how machine-readable provenance may be incorporated into automated analytical workflows using IPython and the Semantic Web. 
-
-Embracing these tools and strategies speaks to a broader philosophy of open science that has yet to fully catch on in the IEA community. Beyond making data publicly available, open science advocates for the “free and unfettered access to all aspects of the scientific endeavor” [@hampton2015], including methods, data and scientific products. These values lend themselves to the broad applicability of IEAs as decision-making tools for ecosystem-based management (EBM). 
-
-There are several entry and exit points for data, methodological, and scientific products throughout the execution of an IEA. Data entry points are formed during the exploratory phases of the IEA process, where objectives are scoped and representative indicators are developed. Exit points for data products can be found in the derived indicator data informing ecosystem status reports and risk assessments. Simulated products and model parameters, such as those resulting from MSE model runs, are also important to disseminate. Any data that leaves or enters an IEA brings with it metadata and code used to analyze, process, and visualize the data (in various stages of completion). Through the process these datasets, accompanying code, and metadata documentation become their own general, scientific and technical products feeding into subsequent products and adding transparency and efficiency (Fig. \@ref(fig:iealoop)). 
-
-Without an underlying data management protocol, the vast quantities of data and documentation required to successfully execute an IEA can be overwhelming for practitioners and clients both. For example, the development of ecosystem status reports and risk assessments requires considering the management relevance of hundreds of data sets from many fields. In practice this meant sifting through over 400 unique spatial and temporal data sets that were submitted for consideration during the development of the New England State of the Ecosystem Report, an IEA product. However, only indicators of interest to managers and those necessary for storytelling were included in the final product; just over 90 [@SOE-NEFMC2019].  Depending on the governing body implementing the IEA, each data set must be fully documented with metadata and made publicly available. Versioning data sets and associated metadata relative to specific IEA products also introduces challenges for scientists operating outside the bounds of their training. These hurdles result in data processing and documentation becoming a full time job, and indeed, it is becoming increasingly common for IEA teams to hire Data Analysts and Data Scientists to deal with the data deluge. 
+Data acquisition, management, processing, analysis, and communication are universal challenges that apply across the disparate applications of IEAs. The number of entry and exit points for data in an IEA is large, and outputs vary by end-user need. For example, data may enter into an IEA during the exploratory phases of the process, where objectives are scoped and representative indicators are developed. Exit points for data products can be found in the derived indicator data informing ecosystem status reports and risk assessments. Simulated products (e.g. model output summaries) and model parameters, such as those resulting from MSE model runs, are also important to disseminate, as these results inform management actions. Any data that leaves or enters an IEA brings with it metadata and code used to analyze, process, and visualize the data. Through the processing of these datasets, accompanying code and metadata documentation become scientific and technical products in their own right, feeding into subsequent IEA outputs (Figure 1). Adding to these complexities are the diversity of audiences to which IEA products appeal, including both technical and non-technical users.
+ 
 <!-------------- Figure 1 -------------->
 \begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{./images/products-loop.pdf}
-  \caption{Products as part of the IEA loop according to audience: general, scientific and technical. (*In development)}
+  \caption{Products as part of the IEA loop according to audience: general, scientific and technical (*In development). }
 \end{figure}
 <!------------- End figure 1 -----------> 
 
-The implementation of IEA is an amalgam of the ecosystem and data sciences. Understanding this, we suggest that IEA teams embrace a philosophy of open science. This approach has gained momentum over the past decade within the ecological sciences as a way to deal with large amounts of data produced from a variety of sources [@michener2012], as well as to improve transparency, reproducibility, repeatability, and ease of communication of data products [@rocchini2012; @lowndes2015; @lowndes2017; @ma2018]. This can be accomplished using openly available tools, many of which are highlighted by @hampton2015 and @lowndes2017. 
+Embracing open science, which is defined as public access to scientific data, methods, and products [@hampton2015; @mckiernan2016], along with the tools facilitating open science, have been suggested as solutions to these data challenges [@michener2012; @hampton2015; @lowndes2015; @lowndes2017; @ma2018]. @michener2012 presented examples of how developing data ontologies, which represent formal descriptions of scientific concepts and their relationships, can streamline the synthesis of unique, cross-disciplinary datasets for analysis. @lowndes2017 demonstrated that embracing open science methods resulted in increased efficiency, transparency, and repeatability in the development of the Ocean Health Index; an iterative framework developed to assess the benefits of marine ecosystems to humans for sustainable management. Case studies for applying open science processes to IEAs have also been developed for ecosystem reporting in the Northeast Large Marine Ecosystem. Specifically, @ma2018 applied the W3C PROV Ontology [@lebo2013] to establish machine readable provenance for an ecosystem assessment using IPython, taking a critical advancement towards fully reproducible reporting strategies for IEA. 
 
-The benefits of implementing software development strategies range from the ethical to the practical. For example, @lowndes2017 suggests that changing ecosystem conditions due to anthropogenic impacts necessitate openness among environmental scientists whose data (and code to recreate their data) provide “snapshots” of their study systems amidst the changes. Further, openly-sourcing scientific data with accompanying code provides a record from which previous results may be built upon as more data are collected [@lowndes2017]. From this perspective, iterative IEA products such as ecosystem reports and risk assessments are themselves data points; forming ever-extending arrays of compiled information through time. This approach has been embraced by the Ocean Health Index, which is designed to monitor human-ocean relationships through time by repeated compilation and analysis of ecosystem data [@halpern2012; @halpern2015; @lowndes2015]. 
+In this paper, we present the various open science strategies being implemented within different phases of the IEA framework across regions in the United States. While this implementation is still nascent, we show that open science in IEAs has improved the flexibility of assessments for better responsiveness to stakeholder needs, prevented IEAs from becoming “black boxes” through greater transparency, and increased efficiency in data tasks through automated methods. The accurate capture of data provenance has been recognized as a key component of actionable science [@Ma2014], which IEAs strive towards. Here, we argue that the continued use and improvement of open science techniques in IEAs will further improve their actionability for implementing ecosystem-based management. 
 
-We suggest that the incorporation of version control and standardized methods for the collection, aggregation, and dissemination of IEA-oriented data and products can facilitate flexible and efficient use of IEAs, broadening their applicability and hastening their uptake by resource managers. These methods also confront the challenging spatial aspects of IEAs, which are inherently unique to the systems being addressed. As we discuss below, embracing standardized methods and open data science principles/tools would facilitate the implementation of future IEAs in new systems.
+# Scientific workflow
+
+Within each analytical phase of the IEA framework (ecosystem assessment, risk assessment and strategy evaluation) (Figure 1), the general scientific workflow is similar (Figure 2a). The emphasis may vary between phases of the IEA framework, but the overall workflow (import, analyze, visualize and communicate) remains [@wickham2016]. Adoption of open science principles allows IEA practitioners to efficiently transfer knowledge between phases of the IEA framework (Figure 1). Below we outline the scientific workflow and highlight some open science applications of common software tools used in IEAs (Figure 2b). These examples by no means cover all of the tools available nor all of possible applications of those mentioned, but are representative of the methods currently in use across IEA regions in the United States. Throughout the scientific workflow there are many opportunities to apply open science principles and tools, but there is no prescriptive outline to follow. The iterative nature of exploratory data analysis [@tukey77; @wickham2016] suggests the loop (Figure 2a), whereby upon visualizing outputs, outliers can be handled, models improved, ancillary data imported, visualizations modified and communication strategies updated.
 
 <!---### Panel Figure and Table ####--->
-
-```{r table}
+```{r workflow_table}
 library(knitr)
 library(tidyverse)
 library(kableExtra)
-library(readr)
 library(here)
 
-workflow_csv <- here("ODM/tables/workflow.csv")
-workflow_tex <- here("ODM/tables/workflow2.tex")
+redo_workflow_tbl <- F
+workflow_cols <- 1:2
 
-if (!file.exists(workflow_csv)){
-  
-  tbl_workflow <- data.frame(
-    Function = c(rep("Import", 2), rep("Analyze", 3), rep("Visualize", 3), rep("Communicate", 5)),
-    Implementation = c('ecodata', 'Data portals', 'lm to ecosystem modelling','ecotrend', 'Ecosystem modelling', 'Standardized plotting', 'Web-based visuals', 'Simple plots', 'Report writing, article writing, methods documentation', 'Continuous integration', 'Versioning software', 'Collaborative package/document development and data sharing', 'Data portals'),
-    Tool = c('R package', 'ERDDAP','Shared R scripts', 'R package', 'Ecopath with Ecosim', 'Shared R scripts','Shiny','Excel','Rmarkdown','Travis', 'Git', 'Github', 'ERDDAP'))
-  write_csv(tbl_workflow, "./tables/workflow.csv")
-}
+workflow_csv  <- "https://docs.google.com/spreadsheets/d/1J2psfQ-ZgwiS-9ak2g0wtXE9vj1FlzJaQufryIBqMgQ/export?format=csv&gid=0"
+#workflow_csv <- here("ODM/tables/workflow.csv")
+workflow_tex <- here("ODM/tables/workflow.tex")
 
-if (!file.exists(workflow_tex)){
+if (!file.exists(workflow_tex) | redo_workflow_tbl){
 
-  tbl_workflow <- read_csv(workflow_csv)
+  tbl_workflow <- read_csv(workflow_csv) %>% 
+    select(1:2) %>% 
+    fill(1)
 
-  knitr::kable(tbl_workflow, booktabs = T, format="latex") %>%
-    kable_styling(full_width = F,  position = "right", font_size = 3) %>%
+  kable(tbl_workflow, booktabs = T, format="latex") %>%
+    #kable_styling(full_width = F, position = "right", font_size = 5) %>%
+    kable_styling(font_size = 5) %>%
     column_spec(1, bold = T) %>%
-    column_spec(2, width = "10em") %>%
-    collapse_rows(columns = 1) %>% 
+    #column_spec(2, width = "20em") %>%
+    collapse_rows(columns = 1, valign = "middle") %>% 
+    str_replace(fixed("\\begin{table}[H]\n\\centering"), "") %>% 
+    str_replace(fixed("\\end{table}"), "") %>% 
     cat(file = workflow_tex)
 }
 ```
 
-<!--
-workflow.tex:
-- strip `table` begin/end lines:
-  ```
-  \begin{table}[H]
-  ...
-  \end{table}
-  ```
-sciloop.pdf:
-- Google Slides, File > Download > svg -> sciloop.svg
-- on Mac terminal: 
-  ```bash
-  brew cask install inkscape
-  cd ~/github/ODSmanu/ODM/images
-  inkscape -D -z --file="$PWD/sciloop.svg" --export-pdf="$PWD/sciloop.pdf" --export-latex
-  ```
--->
-
 \begin{figure}
   \centering
   \subfloat[Process]{           
-    \includegraphics[width=0.50\textwidth,valign=t]{./images/sciloop.pdf}
+    \includegraphics[width=0.50\textwidth,valign=c]{./images/sciflow-loop.pdf}
     \label{fig:sciflow-loop}
     }
   \subfloat[Elements]{
-    \adjustbox{valign=t}{
+    \adjustbox{valign=c}{
       \input{./tables/workflow}
       \label{tbl:sciflow-table}}}
   \caption{Scientific workflow.}
 \end{figure}
 <!------------- End figure/table ----------->
 
+## Import
+
+Handling data in a way that is both reproducible and transparent begins with the initial import and good data management practices must start here. IEAs present specific challenges for data import, as indicators are often iteratively updated and may change as management priorities fluctuate through time. The sources of these data are varied and contributors may have their own data management systems, leading to issues when tracking metadata and data provenance. Leveraging open science software tools to control the import, storage, and management of datasets can help address many of these challenges [@yenni2019]. 
+
+Two systems for identifying and importing data into any phase of the IEA framework are data catalogs and data services. Data catalogs serve as an inventory of available data. They present metadata so at a glance the data consumer can determine if the full dataset meets their needs. Data services on the other hand provide a standard way of accessing data and allow for machine-to-machine transport. Once a data service is set up, updating a dataset can be as easy as dropping the updated file into a directory. The data service ERDDAP [@ERDDAP] is a free and open source software tool that can serve gridded and tabular datasets in a variety of formats (.csv, .png, .nc, etc.) through a single interface. ERDDAP provides direct access to indicator data for IEA scientists and the public, and datasets can be imported programmatically (e.g. using `rerddap` [@chamberlain2019] in R). Both data catalogs and data services provide more transparent and efficient paths of importing data compared to traditional methods like email.  As more IEA contributors develop data catalogs and services, the network of publicly available, properly documented IEA source data products will continue to grow.
+
+### Data Provisioning
+
+A data provisioning strategy, through which the dissemination of data between collaborators and with the public is defined, is important for the development and execution of the IEA process. Establishing a data service or central repository for indicator data provides access to the data for all collaborators, and in addition provides a single authoritative source for the latest data and metadata. Data services such as ERDDAP provide direct access to data using open science tools and scripts (Figure 2b). DataOne provides a full archive of a dataset in most any format, but datasets are not easily subsettable or translated into alternative formats like ERDDAP. Both ERDDAP and DataOne can have standardized metadata, e.g. in Ecological Metadata Language (EML) associated with datasets that describe the data and its derivation, i.e. methods. Inputting and maintaining metadata is one of the more onerous yet essential tasks of data management to ensure data integrity and proper usage. A short-term, but less-standardized strategy for provisioning data is to use Github to store the data files, such as done with `ecodata` (github.com/NOAA-EDAB/ecodata) in the Northeast US IEA region. This method is feasible for short tabular datasets (e.g. .csvs), but continually updated, long-term data storage is not the intended purpose for space-limited Github repositories, and a more robust data provisioning software is typically warranted. By utilizing any of these data services, standard methods for data access can be used to import, analyze and visualize the data (Figure 2a). Rather than downloading data and keeping private copies on individual computers, specific versions and data sources can be flagged and products updated in an automated fashion as the data are revised. 
+
+Groups may choose between storing data and indicators in a central repository with a data service providing access, or keeping control of the data within the institution implementing the IEA. In the latter case, data can be distributed among institutions, each institution installing their own data service, and a single data service at one of the institutions can act as a virtual central repository. Installing a data service can seem daunting, but there are tutorials and classes available, and institutions with established data services are often more than happy to help other institutions set up their own servers or serve their data. Once a data service is set up, and IEA practitioners have decided on a standard data format, updating a dataset in a data service such as ERDDAP can be as easy as dropping the updated file in a directory. Efficient indicator storage and data management practices such as these translate into quicker product development in the following phases of the IEA framework.
+
+## Analyze 
+
+The analysis performed in each phase of the IEA framework varies from simple trend analysis to more complex ecosystem modelling and simulation. To accomplish these disparate tasks, software tools have been developed and deployed to streamline each phase of the IEA framework. Software packages used to store related functions specific to the needs of regional IEAs have been built embracing open science principles (for example, several IEA software products are under development at github.com/NOAA-EDAB). These packages handle everything from simple to complex analyses and can be made available to the public which promotes reproducibility and transparency. Standard packaging of functions creates inline documentation and allows others in the open-source community to contribute improvements for approval by the package author. In some cases it is useful to rely on tools already in existence like Ecopath with Ecosim, an ecosystem modelling and simulation tool which is free, publicly available and well documented [@christensen2004]. The analysis step in the scientific framework is important and decisions made here should be defendable, the application of open science will make this step more transparent and thus trustworthy. 
+
+## Visualize
+
+Once analyzed, information must be shared in a digestible format, most likely some intuitive visualization. To produce understandable visualizations and make them available to resource managers and the public, IEA practitioners must package complex ecosystem information quickly and repeatedly. Application of software tools have greatly decreased the time spent building visualizations resulting in more rapid and effective communication of IEA products.
+
+Best practices for data visualization are easily implemented in the `ggplot2` R library [@wickhamGraphics2016], which implements the “grammar of graphics” [@wilkinson2012]. These static visualizations can further be made interactive, e.g. zoom, pan and turn on/off series in an online time series plot, by simply feeding a `ggplot2` plot object to the `ggplotly` function in the plotly library [@plotly2019]. The plotly library, like most R packages producing interactive online visualizations, uses the htmlwidgets framework (htmlwidgets.org) to wrap JavaScript visualization libraries into easy to use R functions.
+
+## Communicate
+
+Perhaps the most important step in the scientific workflow is the communication of products developed for regional IEAs. As shown in Figure 1, the diversity of IEA products is further complicated by the many audiences that must also be appealed to. Several tools have been used by IEA teams to meet this challenge; perhaps most notably the use of interactive websites allowing users to visualize and interact with IEA data at multiple technical levels (e.g. https://mbon.ioos.us/).  These websites, with associated reports and data portals, all must be established and maintained throughout the often multi-year IEA process. 
+
+Some IEA teams have chosen to use Rmarkdown [@baumer2014] to build their yearly reports, because scripting-based methods of reporting are typically more reproducible than traditional approaches like Microsoft Word [@lowndes2017]. These methods  allow for template development to ensure cohesive products between years, and also for the simultaneous editing of code and text for simplifying workflows. This approach removes the need to copy/paste figures into a document. Programmatic document creation can easily be translated to other communication types (presentations, books, articles, etc.) facilitating the delivery  of information to a variety of audiences. All of these features, and especially when combined with public code repositories and continuous integration software, promote transparency and create a balance between automation and flexibility. 
+
+Web applications and data portals play an important role within an IEA. Web applications can provide a means of communicating indicator status and trends to managers, fisheries councils, and the public, and can be designed to customize the experience for particular interest groups. The technical barriers to developing useful web tools for communicating IEA products has declined with the advent of HTML/CSS/JS wrappers for scientific programming languages like R and Python. For example, websites may be generated from static Rmarkdown and Jupyter Notebook documents [@kluyver2016] for sharing IEA products. Further, web applications can directly access data services such as ERDDAP in order to always serve the most recent indicator data.  Data portals act as a tool in indicator data discovery and exploration, a source for data import and a place to view indicators in a central location, which also makes them a useful communication tool. 
+
+## Collaborate
+
+Collaboration is built into all aspects of the IEA framework and associated scientific workflows. IEAs must include input from stakeholders, management bodies and multiple scientific disciplines [@Levin2009, @samhouri2014], and several open science methods have been used to facilitate this communication. Having a central repository with the latest versions of files is essential for internal collaboration. For code, the most common open-source central repository in use for IEAs is Github. Github works with the version-control software Git to track progress, roll back changes, and prevent loss of work amongst collaborators [@ram2013; @chacon2014]. 
+
+The institutional memory gained by using Github project management, e.g. with issues and messages from commits, means that new team members can quickly view the progression of a project and contribute.  This is especially useful in IEAs in which there are many contributors and those contributors may change through time. Combining version control with a central repository, like Github, means that all interested parties have access to IEA work and team members can collaboratively and simultaneously work on projects while on different machines without losing individual work products. 
+
+Internal reproducibility is essential for collaborative work and should be a focal component of IEA development to ensure efficiency. For R users, this may be achieved through the use of packages like `here` [@here], which enhances the portability of scripts across collaborator computers by managing paths with respect to the root of the repository. Continuous integration (CI) is another software developer concept useful to the IEA process. By utilizing the “freemium” model of CI services such as Travis CI, websites and reports can be automatically updated for free with the latest data and content on a regular basis (e.g. daily or monthly) and when any files in an associated public repository are changed. If anything breaks in the scripts then maintainers can be notified via email. Together these software tools have improved the scientific workflow within all phases of the IEA framework. 
+
+# Define EBM Goals & Targets, Develop Indicators (IEA Process)
+
+Clear and achievable goals and targets are necessary for priority setting the IEA workflow [@Levin2009], and establishing these targets requires flexible collaboration between many stakeholders. Collaborations between scientists, stakeholders, and managers may be enhanced through the adoption of open science methods. For example, the development of interactive data portal websites, such as those from the Marine Biodiversity Observation Network (https://mbon.ioos.us/), Mid-Atlantic Ocean Data Portal (http://portal.midatlanticocean.org/), or Northeast Ocean Data Portal (https://www.northeastoceandata.org/) make IEA-related science accessible for stakeholders and managers without technical backgrounds. For stakeholders, lowering the barriers to entry for accessing science products will make for more informed IEA goal development. 
+ 
+Embracing open science practices during this phase of the IEA process will benefit scientists as well. As @hampton2015 advocated, “free and unfettered access” promotes the discovery of relevant datasets that could be used as ecosystem indicators. Further, the amount and spatiotemporal scales of open-sourced information available from a wide variety of stakeholders and public repositories creates a crosswalk between goal setting and indicator development. Open science principles allow data consumers to quickly take inventory of what data exist and at what scale relevant to their data needs [@Wilkinson2016]. 
+
+Developing indicators that are both of interest to managers as well as relevant in explaining ecosystem dynamics is a vital phase of the IEA framework [@Levin2009].  It can be challenging to identify indicator datasets if they are not stored together or if the are not publicly available. As previously stated, IEAs are working with data catalogs and data servers to apply open science principles to overcome these challenges. Data provenance also plays an important role in indicator development and adds transparency to derived datasets [@ma2018]. 
+
+# Assess Ecosystem (Northeast Ecosystem Assessments)
+
+Regular production of ecosystem assessments are important for the continued tracking of how the system is changing [@Levin2009; @zador2017] and therefore have become a staple in IEAs. Though intervals between assessments vary by region, the need to reiterate workflows persists, and developing automated workflows for common tasks can greatly enhance efficiency and reproducibility of these workflows. As discussed by @lowndes2017, automating key tasks allows for quicker product turnaround, increased time spent interpreting indicators, and effectively communicating the findings. In the Northeast IEA region, the IEA team has developed a workflow to automate many aspects of their ecosystem assessment reports. From initial data import to ecosystem assessment production, each step in the scientific workflow has included streamlining tools to enhance reproducibility and collaboration. 
+
+The NE IEA workflow has progressed steadily in its use of open science principles over the past few years. Each iteration of the annual ecosystem assessment brings improvements to the workflow and identification of new opportunities for streamlining. The NE IEA team produce two ecosystem assessment (State of the Ecosystem, SOE) reports each year covering multiple large marine ecosystems. The variety of spatial and temporal scales described by data in these reports create a complex problem for data management and directory organization. The workflow constructed to manage these complexities is as follows. 
+
+With each iteration, data contributors deliver a diverse array of datasets, both in structure and scientific domain. Processing code for these data sets, which converts them from native formats to a single, standard format used within ecosystem reporting workflows, is included with an open-source R package containing the derived indicator data [@ecodata].  Packages associated with ecosystem reporting are continually updated as new indicators are developed, and outputs from these packages are directly incorporated into SOE reports and other IEA products. Report production is facilitated by the use of  Rmarkdown for automating the production of ecosystem assessments using report templates created to maintain cohesive report formatting from year to year. Team members are able to collaboratively write and edit both text and code through Github, further expediting the process. Each indicator used in the reports is documented using a comprehensive methods document where all contributors can collaboratively edit and update individual indicator chapters [@techdoc]. This workflow allows for both automation and flexibility where needed, and continues to be improved upon. 
+
+All team members working on the reports, packages, or templates use the same coding language and directory structures, which greatly increases the ease of collaboration internally. The efficiency and institutional memory gained through the transition to open science principles has allowed for more reproducible and coherent products from year to year, while also allowing the products to grow and adapt to the needs and requests of the primary audience (Fisheries Management Councils). 
+
+# Analyze Uncertainty & Risk (California Current Fisheries)
+
+The California Current IEA (CCIEA) is an example of a region that has embraced open science principles and built on them over the years. CCIEA reports are generated from data spanning the entire West Coast, numerous data providers, and many different ecosystems. Members include scientists from two Fisheries Science Centers, and many private foundations and academic institutions. The CCIEA had foresight early in the development process to agree upon a standard data format for sharing of indicators and a standard plot for indicators that included statistics of interest. Shared R scripts were developed to read the standard format and generate the plots. Today, all CCIEA indicator data is served by ERDDAP, making it available to be used directly by these same R scripts, as well as by an interactive web application that provides time series plots and tables of indicator status and trends.
+
+In 2019, this data management technique was used to conduct an ecological risk assessment (ERA) for nine California fisheries [@Samhouri2019]. The open science principles applied to develop other phases of the IEA framework were directly implemented in this ERA. The time spent developing the ERA decreased due to the efficiency built into the data management steps of the scientific workflow, which allowed for more time dedicated to interpretation and dissemination of the results. In the future, this groundwork can be leveraged to spin up new ERAs, as the current structure exists in a repeatable format. 
+Like all phases of the IEA process, risk assessments require the participation of many stakeholders. The assessments are linked to management decisions and management objectives, which are often focused on balancing the needs of a variety of stakeholders. The participatory process and transparency in the development of the ERA may increase stakeholders’ trust in the assessment and therefore its application in management [@Samhouri2019]. Public cooperation in establishing the priorities and publicly available code and data highlight the adoption of open science principles by the IEA team. This adds transparency, trust, and possibly greater adherence to management decisions built on this work. In addition, it increases the potential for transferability and adaptation to decision contexts in the California Current region and beyond.
+
+As a second example in the California Current, the development of the EcoCast framework [@hazen2018] and tool [@welch2018] relies on open science principles to create a user-friendly interface for determining risk to protected species from fishing. Specifically, this approach describes the expected distribution of species targeted by a fishery (e.g., swordfish) in relation to the expected distribution of species caught in that fishery by accident (e.g., leatherback turtles). These predictions of species’ distributions are made in near-real time and available online, enabling managers and fishermen to make daily decisions about where it is more or less risky to fish in order to avoid bycatch. This tool therefore informs a dynamic ocean management approach [@lewison2015] that can improve fisheries sustainability . It was developed in collaboration between SWFSC, NMFS Western Regional Office, Council advisory body staff, reflecting the collaborative approach underlying open science principles. All of the code, both describing the development of EcoCast and its operationalization, are freely available on GFithub.
+
+# Evaluate Management  Strategies (Pacific Islands Coral Reef Management)
+
+The final phase of the IEA framework is to evaluate potential management strategies (Figure 1). The Puakō coral reef ecosystem management strategy evaluation (MSE) used open science principles at several points of  MSE development. Simulation studies such as these carry with them a variety of input, output and parameterization data that can greatly benefit from the application of open science principles. Input data used to conduct the Puakō coral reef ecosystem MSE were sourced from a literature review by scientific partners [@weijerman2018] and modelled using free and publicly available ecosystem modelling software, Ecopath with Ecosim  (EwE; version 6.4.4). 
+
+ Many other opportunities exist for using open science principles in MSE development. Publicly available code for standardized analysis and visualization could increase reproducibility and incorporation of code and text in the report production could greatly increase communication efficiency. Automation and streamlining of this scientific workflow could lead to faster MSE production in other regions through enhanced reproducibility and institutional memory or could allow for more management strategy simulations as time needed to analyze, visualize and communicate work is reduced. As in all other IEA phases, further adoption of open science is needed. 
+
+# Discussion
+
+The implementation of IEAs is a challenge in data science as much as it is a challenge in the traditional hard sciences. Each data science challenge faced by IEA teams is unique due to the place-based nature of IEAs and EBM more broadly. However, overlap in workflows between regions implementing IEAs suggests key takeaways from the work accomplished so far. 
+
+Due to the diverse nature of datasets used in IEAs, it is crucial to standardize and automate data formatting upon submission whenever possible. The development of tools for massaging data into usable formats may have steep learning curves, but greatly reduce the overall effort in subsequent IEA iterations. However, despite standardization efforts, data and metadata are often inconsistent from year to year. While this can be due to human error or events such as staff turn over, it could also be due to changes in ecosystems and priorities. Naming conventions that worked one year may fail the next due to unexpected changes in sampling regions or species behavior. Ecosystem events (for example the “warm blob”) cause changes in survey and reporting priorities. Any IEA data workflow must be flexible enough to handle such changes without becoming unduly labor intensive. Each IEA team must establish the appropriate balance between automation and flexibility.
+
+The use of software development tools within the scope of IEA will only get the IEA practitioner so far. Perhaps the larger challenge in the IEA process is impressing upon collaborators that their contributions are valued and their time well spent. Efficient data pipelines can lower the barrier to entry for scientists wishing to contribute their work to an IEA. However, that does not keep collaborators engaged through what is likely to be a multi-year project spanning several distinct periods. Strategies have been developed to smooth this process. As discussed, some IEA teams install contributor data into publicly accessible data servers with web-based analysis and visualization tools (Figure 2b). Data services such as these can incentivise long-term collaboration by adding value, visibility and proper attribution to both the contributor and their work.  
+
+The placed-based nature of EBM determines the spatial scale of datasets used in IEA products. In the case of the Channel Islands National Marine Sanctuary, the use of openly available data lead to a better description of ecosystem state. Three different long term monitoring surveys that collect samples within the sanctuary have regional extents much larger than the sanctuary; the California Cooperative Fisheries investigations Ichthyoplankton surveys and Northwest Fisheries Science Center’s Shelf Rockfish Hook and Line surveys cover much of Southern California waters and the Northwest Fisheries Science Center Groundfish Bottom Trawl survey covers the entire U.S. west coast. In each case, the data was subset to include one analysis using only samples collected in the sanctuary paired with another analysis that included samples from the large region in which the sanctuary resides. This is an example of down-scaling from larger regional monitoring to a scale that is relevant for the management area, in this case the marine sanctuary. 
+
+The issue with scale can also work in the other direction. On the east coast, where many states are included in the large marine ecosystem management area, smaller state-specific coastal surveys must be combined to cover the total managed area. Finding statistically sound datasets in the appropriate scale is important and sometimes difficult. Public access to data of varying scales can help identify and fill gaps in data of the appropriate scale. 
+
+Making all data publicly available may not be the best practice for all datasets. Data can sometimes be sensitive in nature and thus must be handled appropriately before being made available to the masses. This is often the case for fisheries dependent data that uses catch location or in circumstances when knowledge of the exact location could put a  species at risk of poaching, for example ESA-listed black abalone, *Haliotis cracherodii*, along the California coast. It is standard to aggregate data in these circumstances and, though resolution is lost, the usability of the dataset increases. Password controls on services such as ERDDAP can provide a place for sensitive data while allowing access to scripts that aggregate and prepare indicators for public access. Individual IEAs can choose a method of data aggregation that suits their unique situation. Though we advocate transparency and publicly accessible data, this may not be practical for all data types and thoughtful action must be taken when handling sensitive datasets. 
+
+Coming together around a single development environment that works for most parties will increase efficiency and minimize pain points in the development process by ensuring that team members feel that they’re able to contribute and understand the scripts being shared that concern their work. This also increases the flexibility in which the IEA team can adapt to new projects. Project development workflows, with standardized directory structures containing unique locations for data, processing and analytical scripts, and output documents will greatly enhance productivity. These practices will address challenges in “starting over” for each application of the IEA process. Strive to ensure that your scripts will run with little to no effort on your team member’s machines. Embracing relative working directories (e.g. making use of the ‘here’ package for R [@here]) will go a long way towards getting you there. This will also help stakeholders/scientists use your work if they choose to. A great launching off point for preparing for the shift to these principles may be the participation in a data literacy workshop (ex. Software Carpentry series) that is focused on reproducibility and open science principles.
+
+# Call to action 
+
+Each scientific workflow in place today started with small steps and has progressed incrementally with each iteration. We recommend starting small while keeping in mind the possibility for growth. To get started, we suggest three relatively simple action items: prior to beginning a new IEA, choose a single development environment for the group to learn and work in, establish and adhere to project development workflows, and advocate for group participation in a data literacy workshop or other technical trainings [@wilson2006; @lowndes2017]. These initial steps will help get your group engaged with and (hopefully) excited about open-science techniques. 
+
+Each regional IEA team applies open science principles differently, and though the scientific workflow is unifying throughout, its implementation is varied and constantly improving. While there is an upfront cost to learning new technical skills and becoming familiar with the programs discussed in this paper, we suggest that the return on this investment will be worth it. The reproducibility and efficiency gained through applying open science principles is valuable and should be the standard. Adoption of open science principles/tools to support IEAs across the US has dramatically increased the IEA practitioners’ efficiency as the need to produce informative, up-to-date, and usable products can be met faster by the application of these principles. The rapid product turnaround and the highly collaborative nature of IEAs make open science extremely useful in advancing the implementation of EBM. 
 
 # References
 <div id="refs"></div>

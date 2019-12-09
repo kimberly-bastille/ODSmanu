@@ -43,6 +43,7 @@ institute:
     
 abstract: |
   The text of your abstract.  150 -- 250 words.
+  
 csl: estuaries-and-coasts.csl
 bibliography: bibliography.bib
 output:
@@ -83,9 +84,10 @@ Without an underlying data management protocol, the vast quantities of data and 
 \begin{figure}
   \centering
   \includegraphics[width=1.0\textwidth]{./images/products-loop.pdf}
-  \caption{Products as part of the IEA loop according to audience: general, scientific and technical.}
+  \caption{Products as part of the IEA loop according to audience: general, scientific and technical. (*In development)}
 \end{figure}
 <!------------- End figure 1 -----------> 
+
 The implementation of IEA is an amalgam of the ecosystem and data sciences. Understanding this, we suggest that IEA teams embrace a philosophy of open science. This approach has gained momentum over the past decade within the ecological sciences as a way to deal with large amounts of data produced from a variety of sources [@michener2012], as well as to improve transparency, reproducibility, repeatability, and ease of communication of data products [@rocchini2012; @lowndes2015; @lowndes2017; @ma2018]. This can be accomplished using openly available tools, many of which are highlighted by @hampton2015 and @lowndes2017. 
 
 The benefits of implementing software development strategies range from the ethical to the practical. For example, @lowndes2017 suggests that changing ecosystem conditions due to anthropogenic impacts necessitate openness among environmental scientists whose data (and code to recreate their data) provide “snapshots” of their study systems amidst the changes. Further, openly-sourcing scientific data with accompanying code provides a record from which previous results may be built upon as more data are collected [@lowndes2017]. From this perspective, iterative IEA products such as ecosystem reports and risk assessments are themselves data points; forming ever-extending arrays of compiled information through time. This approach has been embraced by the Ocean Health Index, which is designed to monitor human-ocean relationships through time by repeated compilation and analysis of ecosystem data [@halpern2012; @halpern2015; @lowndes2015]. 
@@ -94,7 +96,7 @@ We suggest that the incorporation of version control and standardized methods fo
 
 <!---### Panel Figure and Table ####--->
 
-```{r workflow_table}
+```{r table}
 library(knitr)
 library(tidyverse)
 library(kableExtra)
